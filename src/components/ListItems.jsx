@@ -1,5 +1,5 @@
-import React from "react";
-import Item from "./Item";
+import React from "react"
+import Item from "./Item"
 
 const ListItems = (props) => {
 	const items = [
@@ -27,7 +27,7 @@ const ListItems = (props) => {
 				"https://phantom-marca.unidadeditorial.es/3048cfe70baea6d9555c87166cee9cb6/resize/1320/f/webp/assets/multimedia/imagenes/2021/05/06/16203189025527.jpg",
 			visible: true
 		}
-	];
+	]
 	return (
 		<div
 			style={{
@@ -37,10 +37,10 @@ const ListItems = (props) => {
 			}}
 		>
 			{items.map((item, key) => (
-				<Item key={key} item={item} />
+				<Item key={key} item={item} visible={item.visible} />
 			))}
 		</div>
-	);
-};
+	)
+}
 
-export default ListItems;
+export default ListItems
