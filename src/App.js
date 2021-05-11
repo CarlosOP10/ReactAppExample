@@ -1,12 +1,13 @@
-import './App.css';
-import './components/ListItems'
-import ListItems from './components/ListItems';
+import "./App.css"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./components/ListItems/ListItems"
+import ListItems from "./components/ListItems/ListItems"
 function App() {
-  return (
-    <div className="App">
-      <ListItems/>
-    </div>
-  );
+	return (
+		<div className="App">
+			<ListItems />
+		</div>
+	)
 }
 
-export default App;
+export default App
