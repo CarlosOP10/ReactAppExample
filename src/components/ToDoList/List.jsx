@@ -1,5 +1,6 @@
 import React from "react"
 import { Badge, Container } from "react-bootstrap"
+import ThemeContext from "../Context/ThemeContext"
 import ToDo from "./ToDo"
 
 const List = () => {
@@ -38,14 +39,24 @@ const List = () => {
     }
   ]
   return (
-    <Container style={{ marginTop: "70px", border: "1px solid black" }}>
-      <h1>
-        <Badge variant="primary">TO DO LIST</Badge>
-      </h1>
-      {toDoList.map((todo) => (
-        <ToDo key={todo.id} todo={todo} />
-      ))}
-    </Container>
+    <ThemeContext.Consumer>
+      {(context) => (
+        <Container
+          style={{
+            marginTop: "70px",
+            border: "1px solid black",
+            background: context.background
+          }}
+        >
+          <h1>
+            <Badge variant="primary">TO DO LIST</Badge>
+          </h1>
+          {toDoList.map((todo) => (
+            <ToDo key={todo.id} todo={todo} theme={context} />
+          ))}
+        </Container>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 

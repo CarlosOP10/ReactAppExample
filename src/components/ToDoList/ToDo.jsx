@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { InputGroup, FormControl } from "react-bootstrap"
 import PropTypes from "prop-types"
 
-const ToDo = ({ todo }) => {
+const ToDo = ({ todo, theme }) => {
   const [todoState, setTodoState] = useState({ ...todo, checked: false })
 
   const handleOnChangeMessage = (prop) => (event) => {
@@ -20,7 +20,6 @@ const ToDo = ({ todo }) => {
   }
   return (
     <InputGroup style={{ margin: "10px" }}>
-      {console.log(todoState)}
       <InputGroup.Prepend>
         <InputGroup.Checkbox
           checked={todoState.checked}
@@ -29,6 +28,7 @@ const ToDo = ({ todo }) => {
         />
       </InputGroup.Prepend>
       <FormControl
+        style={{ background: theme.background, color: theme.foreground }}
         aria-label="Text input with radio button"
         value={todoState.message}
         onChange={handleOnChangeMessage("message")}
