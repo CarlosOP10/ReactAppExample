@@ -1,20 +1,13 @@
-import React from "react"
-import ThemeContext from "./ThemeContext"
+import React, { useState } from "react"
+import ThemeContext, { themes } from "./ThemeContext"
 
 const ContextProvider = (props) => {
-  const themes = {
-    light: {
-      foreground: "#000000",
-      background: "#eeeeee"
-    },
-    dark: {
-      foreground: "#ffffff",
-      background: "#222222"
-    }
+  const [themeState, setThemeState] = useState(themes.light)
+  const changeTheme = () => {
+    setThemeState(themeState === themes.dark ? themes.light : themes.dark)
   }
-
   return (
-    <ThemeContext.Provider value={themes.dark}>
+    <ThemeContext.Provider value={{ themeState, changeTheme }}>
       {props.children}
     </ThemeContext.Provider>
   )
