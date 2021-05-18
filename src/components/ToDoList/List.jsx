@@ -1,9 +1,10 @@
 import React, { useContext } from "react"
 import { Badge, Button, Container } from "react-bootstrap"
 import ThemeContext from "../Context/ThemeContext"
+import { connect } from "react-redux"
 import ToDo from "./ToDo"
 
-const List = () => {
+const List = ({ title }) => {
   const toDoList = [
     {
       id: 1,
@@ -51,7 +52,7 @@ const List = () => {
         Change Theme
       </Button>
       <h1>
-        <Badge variant="primary">TO DO LIST</Badge>
+        <Badge variant="primary">{title}</Badge>
       </h1>
       {toDoList.map((todo) => (
         <ToDo key={todo.id} todo={todo} theme={themeState} />
@@ -60,4 +61,8 @@ const List = () => {
   )
 }
 
-export default List
+const MapStateToProps = (state) => ({
+  title: state.title
+})
+
+export default connect(MapStateToProps)(List)
