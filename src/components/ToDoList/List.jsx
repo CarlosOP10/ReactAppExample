@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { Badge, Button, Container } from 'react-bootstrap'
-import ThemeContext from '../Context/ThemeContext'
+import ThemeContext from '../../Context/ThemeContext'
 import { useDispatch, useSelector } from 'react-redux'
 import ToDo from './ToDo'
-import { addItemToDoList, deleteItemsToDoList } from '../Redux/actionsCreators'
+import { addItemToDoList, deleteItemsToDoList } from '../../Redux/actionsCreators'
 
 const List = () => {
   const { title, toDoList, itemsFinish } = useSelector(state => ({
@@ -44,10 +44,4 @@ const List = () => {
   )
 }
 
-// const MapStateToProps = (state) => ({
-//   title: state.title,
-//   toDoList: state.toDoList
-// })
-
 export default List
-// export default connect(MapStateToProps)(List)

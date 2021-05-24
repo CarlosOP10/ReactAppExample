@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { InputGroup, FormControl } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
-import { addItem, deleteItem } from '../Redux/actionsCreators'
+import { addItem, deleteItem } from '../../Redux/actionsCreators'
 
 const ToDo = ({ todo, theme }) => {
   const [todoState, setTodoState] = useState({ ...todo, checked: false })
