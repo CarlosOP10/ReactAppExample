@@ -33,8 +33,8 @@ const ToDo = ({ todo, theme }) => {
       <FormControl
         style={{ background: theme.background, color: theme.foreground }}
         aria-label='Text input with radio button'
-        value={todoState.message}
-        onChange={handleOnChangeMessage('message')}
+        value={todoState.name}
+        onChange={handleOnChangeMessage('name')}
       />
     </InputGroup>
   )
