@@ -68,9 +68,11 @@ const List = () => {
           </Badge>
         </h4>
       </div>
-      {toDoList.map(todo => (
-        <ToDo key={todo.id} todo={todo} theme={themeState} />
-      ))}
+      <Container style={{ height: '600px', overflowY: 'scroll' }}>
+        {toDoList.map(todo => (
+          <ToDo key={todo.id} todo={todo} theme={themeState} />
+        ))}
+      </Container>
       <Button
         variant='danger'
         onClick={() => dispatch(deleteItemsToDoList())}
