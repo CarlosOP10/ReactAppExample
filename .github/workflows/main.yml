@@ -1,0 +1,45 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: [ master ]
+    
+  # Run workflow manually
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
+      - name: Install dependencies
+        run: npm install
+      - name: Clean .cache
+        run: npm run clean
+      - name: Build Development
+        run: npm run build
+      - name: Archive development artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: public
+          path: public
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
+      - name: Download artifact
+        uses: actions/download-artifact@master
+        with:
+          name: public
+          path: public
+      - name: Deploy to Development Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env: 
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
