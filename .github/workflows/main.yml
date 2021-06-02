@@ -16,8 +16,6 @@ jobs:
         uses: actions/checkout@master
       - name: Install dependencies
         run: npm install
-      - name: Clean .cache
-        run: npm run clean
       - name: Build Development
         run: npm run build
       - name: Archive development artifact
