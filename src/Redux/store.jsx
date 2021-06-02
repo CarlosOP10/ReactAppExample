@@ -11,7 +11,7 @@ import {
 } from './actions'
 
 const initialStore = {
-  title: 'TO DO LIST',
+  title: 'TO DO LIST TEST AAAAAAAA',
   toDoList: [],
   itemsFinish: [],
   countToDoList: 0,
