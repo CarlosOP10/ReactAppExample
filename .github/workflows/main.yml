@@ -25,7 +25,7 @@ jobs:
           path: public
   deploy:
     name: Deploy
-    needs: build
+    needs: dist
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
