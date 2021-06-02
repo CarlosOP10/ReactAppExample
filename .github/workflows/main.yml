@@ -2,11 +2,9 @@ name: Build and deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: 
+      -master
     
-  # Run workflow manually
-  workflow_dispatch:
-
 jobs:
   build:
     name: Build
@@ -17,12 +15,14 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build Development
-        run: npm run build
+        run: npm run build -prod
+      - name: Remove old artifacts
+        uses: c-hive/gha-remove-artifacts@master
       - name: Archive development artifact
         uses: actions/upload-artifact@master
         with:
-          name: public
-          path: public
+          name: dist
+          path: dist
   deploy:
     name: Deploy
     needs: build
@@ -33,8 +33,8 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@master
         with:
-          name: public
-          path: public
+          name: dist
+          path: dist
       - name: Deploy to Development Firebase
         uses: w9jds/firebase-action@master
         with:
