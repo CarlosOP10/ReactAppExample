@@ -16,8 +16,6 @@ jobs:
         run: npm install
       - name: Build Development
         run: npm run build -prod
-      - name: Remove old artifacts
-        uses: c-hive/gha-remove-artifacts@master
       - name: Archive development artifact
         uses: actions/upload-artifact@master
         with:
